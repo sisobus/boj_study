@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{{ url_for('static',filename='img/boj_study_favicon.png') }}" type="image/x-icon" />
+    <title>boj_study</title>
+    <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/apple-touch-icon.png') }}"/>
+    <link rel="stylesheet" href="{{  url_for('static',filename='css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="{{  url_for('static',filename='css/twitter_card.css') }}" />
+    <link rel="stylesheet" href="{{  url_for('static',filename='css/style.css') }}" />
+    <link rel="stylesheet" href="{{  url_for('static',filename='css/back-to-top.css') }}" />
+    <link rel="stylesheet" href="{{  url_for('static',filename='css/preloader.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/mp3-player-button.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/fullcalendar.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/animate.min.css') }}" />
+
+    <script src="{{ url_for('static',filename='js/analytics.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static',filename='core/jquery.shapeshift.js') }}"></script>
+    <script src="{{ url_for('static',filename='core/jquery.shapeshift.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='core/vendor/jquery.touch-punch.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/Chart.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/soundmanager2-jsmin.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/mp3-player-button.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/lodash.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/fullcalendar.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/noframework.waypoints.min.js') }}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <!--
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/snow.css') }}" />
+    -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/tag-style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/author-style.css') }}" />
+    <style>
+        .container-shapeshift {
+            position: relative;
+        }
+        .container-shapeshift > .ss-placeholder-child {
+            background: transparent;
+        }
+        .cd-top.cd-is-visible {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+.cd-top.cd-fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+a#boj_study-header-title {
+    color:#ffffff;
+}
+a:hover#boj_study-header-title {
+    color:#ffffff;
+    text-decoration: none;
+}
+a:focus#boj_study-header-title {
+    color:#ffffff;
+    text-decoration: none;
+}
+a#boj_study-header-title-small {
+    color:#ddd;
+}
+a:hover#boj_study-header-title-small {
+    color:#ddd;
+    text-decoration: none;
+}
+a:focus#boj_study-header-title-small {
+    color:#ddd;
+    text-decoration: none;
+}
+
+a#boj_study-footer-title {
+    font-size: 15px;
+    line-height: 23px;
+    color:#ddd;
+}
+a:hover#boj_study-footer-title {
+    color:#ddd;
+    text-decoration: none;
+}
+    </style>
+    <script>
+        $(window).load(function () {
+            $('#loader').fadeOut();
+            $('#preloader').delay(350).fadeOut('slow');
+            $('body').delay(350).css({ 'overflow': 'visible' });
+            })
+        $(document).ready(function() {
+            $(".container-shapeshift").shapeshift();
+        })
+    </script>
+</head>
+</head>
+<body id="body">
+    <!-- Preloader -->
+    <section id="preloader">
+        <div class="loader" id="loader">
+            <div class="loader-img"></div>
+        </div>
+    </section>
+    <!-- End Preloader -->
+<div class="custom_jumbo">
+    <div class="custom_jumbo_container">
+        <h1><a href="/" id="boj_study-header-title"> BOJ STUDY</a></h1>
+        <h2><a href="/" id="boj_study-header-title-small">2016.04.01
+<script>
+   var now = new Date();
+   var then = new Date('april 1,2016');
+   var gap = then.getTime() - now.getTime();
+   gap = Math.floor(gap / (1000 * 60 * 60 * 24)) * -1;
+//   if ( diffInDays != 0 ) diffInDays -= 1;
+document.write('<br><i class="fa fa-hourglass-start" title="aSD"></i> &nbsp;' + gap + ' &nbsp;<i class="fa fa-tags" title=""></i> {{ ret.number_of_total_problem }} &nbsp;</p>');
+</script>
+</a>
+</h2>
+    </div>
+</div>
+{% block content %}{% endblock %}
+
+<div class="custom_jumbo" >
+    <div class="custom_footer_container" id="custom_footer_container">
+        <br><br><br><br><br><br><br><br><br><br>
+    </div>
+</div>
+
+<a href="#0" class="cd-top" style="z-index: 2;">Top</a>
+<script src="{{ url_for('static',filename='js/back-to-top.js') }}"></script>
+<script src="{{ url_for('static',filename='js/retina.min.js') }}"></script>
+</body>
+</html>

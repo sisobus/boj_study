@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/blueimp-gallery.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap-image-gallery.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/arrow.css') }}">
+<div class="container-shapeshift" id="container-shapeshift">
+    {% include 'posts.html' %}
+</div>
+<script src="{{ url_for('static',filename='js/jquery.blueimp-gallery.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/bootstrap-image-gallery.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.infinitescroll.min.js') }}"></script>
+{% endblock %}

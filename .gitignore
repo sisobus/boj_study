@@ -1,0 +1,4 @@
+boj_study/venv/*
+boj_study/data/*
+boj_study/static/*
+*.swp
