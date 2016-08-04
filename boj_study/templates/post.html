@@ -6,6 +6,11 @@
                 <div class="card_custom_body">
                     <h4>
                         <b>{{ post.date }}</b>
+                        {% for pdf in post.pdfs %}
+                        <a href="{{ pdf.path }}">
+                            <div class="author-container">{{ pdf.filename }}</div>
+                        </a>
+                        {% endfor %}
                     </h4>
                     {% for user in post.users %}
                     <a href="https://www.acmicpc.net/user/{{ user.user_id }}" id="tag-link" style="text-decoration:none;">
@@ -17,15 +22,24 @@
                     <a href="https://www.acmicpc.net/problem/{{ problem.problem_id }}" id="tag-link" style="text-decoration:none;">
                         {% if problem.status == 1 %}
                         <div class="tag-container" style="background:#8ED4B1;color:#ffffff;">
-                        {% elif problem.status == 0 %}
-                        <div class="tag-container">
-                        {% elif problem.sttus == -1 %}
-                        <div class="tag-container" style="background:#ff9999;color:#ffffff;">
-                        {% endif %}
                             {{ problem.problem_id }}
                         </div>
+                        {% elif problem.status == 0 %}
+                        <div class="tag-container">
+                            {{ problem.problem_id }}
+                        </div>
+                        {% elif problem.status == -1 %}
+                        <div class="tag-container" style="background:#ff9999;color:#ffffff;">
+                            {{ problem.problem_id }}
+                        </div>
+                        {% endif %}
                     </a>
                     {% endfor %}
+                    <div class="author-container">
+                        {{ user.accept_rate }}%
+                    </div>
+
+                    <br>
                     <br>
                     {% endfor %}
                 </div>

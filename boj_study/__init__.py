@@ -19,6 +19,7 @@ def get_all_date_list():
     date_list   = []
     for date_path in date_paths:
         date_list.append(date_path.split('/')[-1])
+    date_list.sort(reverse=True)
     return date_list
 
 def get_problem_list_with_date(cur_date):
@@ -37,12 +38,28 @@ def get_all_user_list():
         user_list.append(user_path.split('/')[-1])
     return user_list
 
+def get_pdf_list(cur_date):
+    base_directory_path = '/var/www/boj_study/boj_study/static/pdf/'
+    date_file_path = base_directory_path + cur_date + '/'
+    pdf_file_path = glob.glob(date_file_path+'*')
+    pdf_list = []
+    for path in pdf_file_path:
+        d = {
+            'filename': path.split('/')[-1],
+            'path': '/static/pdf/'+cur_date+'/'+path.split('/')[-1]
+                }
+        pdf_list.append(d)
+    return pdf_list
+
 def convert_problems(user_id,problems):
     # is solve : 1
     # none : 0
     # fail : -1
-    with open('/var/www/boj_study/boj_study/data/status/'+user_id+'.json','r') as fp:
-        status = json.loads(fp.read())
+    if os.path.exists('/var/www/boj_study/boj_study/data/status/'+user_id+'.json'):
+        with open('/var/www/boj_study/boj_study/data/status/'+user_id+'.json','r') as fp:
+            status = json.loads(fp.read())
+    else:
+        status = {}
     
     solved = []
     failed = []
@@ -64,6 +81,13 @@ def convert_problems(user_id,problems):
         ret.append(d)
     return ret
 
+def get_accept_rate(problems):
+    number_of_accept    = 0.0
+    for problem in problems:
+        if problem['status'] == 1:
+            number_of_accept += 1
+    return (number_of_accept/float(len(problems)))*100
+
 @app.route('/',methods=['GET'])
 def home():
     user_list = get_all_user_list()
@@ -75,14 +99,19 @@ def home():
         number_of_total_problem += len(problem_list)
         users = []
         for user_item in user_list:
+            cur_problems = convert_problems(user_item,problem_list)
+            accept_rate  = round(get_accept_rate(cur_problems),2)
             d = {
                     'user_id': user_item,
-                    'problems': convert_problems(user_item,problem_list)
+                    'problems': cur_problems,
+                    'accept_rate': accept_rate
                     }
             users.append(d)
+        users = sorted(users, key=lambda k: k['accept_rate'], reverse=True)
         d = {
                 'users': users,
-                'date': date_item
+                'date': date_item,
+                'pdfs': get_pdf_list(date_item)
                 }
         posts.append(d)
 
