@@ -6,7 +6,7 @@ import urllib,urllib2
 import cookielib
 
 def get_all_user_list():
-    base_directory_path = '/var/www/boj_study/boj_study/data/users/'
+    base_directory_path = '/var/www/scsc_2016_summer/boj_study/data/users/'
     user_paths  = glob.glob(base_directory_path+'*')
     user_list   = []
     for user_path in user_paths:
@@ -72,7 +72,7 @@ def update():
                 'failed': failed_problem_ids
                 }
         
-        with open('/var/www/boj_study/boj_study/data/status/'+user_id+'.json','w') as fp:
+        with open('/var/www/scsc_2016_summer/boj_study/data/status/'+user_id+'.json','w') as fp:
             fp.write(json.dumps(ans))
 
 if __name__ == '__main__':
